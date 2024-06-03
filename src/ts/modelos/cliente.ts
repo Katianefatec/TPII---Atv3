@@ -21,7 +21,11 @@ export default class Cliente {
     }
 
     public get Nome() { return this.nome }
+    public set Nome(novoNome: string) { this.nome = novoNome }
+
     public get NomeSocial() { return this.nomeSocial }
+    public set NomeSocial(novoNomeSocial: string) { this.nomeSocial = novoNomeSocial }
+
     public get DataNascimento() { return this.dataNascimento }
     public get DataCadastro() { return this.dataCadastro }
     public get Telefones() { return this.telefones }
@@ -31,4 +35,6 @@ export default class Cliente {
     public get Titular() { return this.titular }
 
     public set Endereco(endereco: Endereco) { this.endereco = endereco }
+
+    
 }
