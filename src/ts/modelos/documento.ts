@@ -17,6 +17,9 @@ export default class Documento {
     public get Tipo(){
         return this.tipo
     }
+    public set Tipo(novoTipo: TipoDocumento) {
+        this.tipo = novoTipo;
+    }
     public get DataExpedicao(){
         return this.dataExpedicao
     }

@@ -2,7 +2,7 @@ import Processo from "../abstracoes/processo";
 import Armazem from "../dominio/armazem";
 import Cliente from "../modelos/cliente";
 
-export default class AtualizarCliente extends Processo {
+export default class AtualizarClienteNome extends Processo {
     private nomeCliente: string
 
     constructor(nomeCliente: string) {
