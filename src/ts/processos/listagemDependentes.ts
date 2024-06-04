@@ -17,11 +17,16 @@ export default class ListagemDependentes extends Processo {
     console.clear();
     console.log("Iniciando a listagem dos clientes dependentes...");
 
-    this.clientes.forEach((cliente) => {
-      if (cliente.Titular !== undefined) {
-        this.impressor = new ImpressaorCliente(cliente);
-        console.log(this.impressor.imprimir());
-      }
+    let nomeTitular = this.entrada.receberTexto("Digite o nome do titular ");
+    console.log("Dependentes:");
+    
+    let dependentes = this.clientes.filter(
+      (cliente) => cliente.Titular?.Nome === nomeTitular
+    );
+     
+    dependentes.forEach((cliente) => {
+      this.impressor = new ImpressaorCliente(cliente);
+      console.log(this.impressor.imprimir());     
     });
   }
 }

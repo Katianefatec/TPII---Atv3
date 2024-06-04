@@ -27,7 +27,7 @@ export default class CadastroClienteTitular extends Processo {
         let armazem = Armazem.InstanciaUnica
         armazem.Clientes.push(cliente)
 
-        let cadastrarDependente = this.entrada.receberConfirmacao("Deseja cadastrar um dependente? (sim/nao)");
+        let cadastrarDependente = this.entrada.receberConfirmacao("Deseja cadastrar um dependente?");
         if (cadastrarDependente) {
             this.processo = new CadastroClienteDependente(cliente);
             this.processo.processar();

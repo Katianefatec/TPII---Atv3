@@ -18,7 +18,7 @@ export default class CadastroTelefone extends Processo {
             let numero = this.entrada.receberTexto('Qual o número?')
             let telefone = new Telefone(ddd, numero)
             this.cliente.Telefones.push(telefone)
-            continuar = this.entrada.receberTexto('Deseja adicionar outro telefone? (s/n)')
+            continuar = this.entrada.receberTexto('Deseja adicionar outro telefone? (sim/nao)')
         }
     }
 }
