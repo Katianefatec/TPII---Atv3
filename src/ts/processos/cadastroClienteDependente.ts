@@ -23,6 +23,7 @@ export default class CadastroClienteDependente extends Processo {
     
 
     cliente.Endereco = this.titular.Endereco.clonar();
+    cliente.Telefones = this.titular.Telefones;
 
     this.processo = new CadastrarDocumentosCliente(cliente);
     this.processo.processar();

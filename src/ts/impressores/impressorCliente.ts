@@ -2,6 +2,7 @@ import Impressor from "../interfaces/impressor";
 import Cliente from "../modelos/cliente";
 import ImpressorDocumentos from "./impressorDocumentos";
 import ImpressorEndereco from "./impressorEndereco";
+import ImpressorTelefone from "./impressorTelefone";
 
 export default class ImpressaorCliente implements Impressor {
   private cliente: Cliente;
@@ -24,12 +25,21 @@ export default class ImpressaorCliente implements Impressor {
     this.impressor = new ImpressorDocumentos(this.cliente.Documentos);
     impressao += `\n${this.impressor.imprimir()}`;
 
+    if (this.cliente.Telefones.length > 0) {
+      impressao += `\nTelefones:`;
+      this.cliente.Telefones.forEach((telefone) => {
+        this.impressor = new ImpressorTelefone(telefone); 
+        impressao += `\n${this.impressor.imprimir()}`; 
+      });
+    }
+
     if (this.cliente.Dependentes.length > 0) {
       impressao += `\nDependentes:`;
       this.cliente.Dependentes.forEach((dependente) => {
         impressao += `\n${dependente.Nome}`;
       });
-    }
+    } 
+
 
     impressao += `\n****************************`;
     return impressao;
