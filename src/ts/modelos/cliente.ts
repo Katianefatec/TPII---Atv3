@@ -48,6 +48,13 @@ export default class Cliente {
         dependente.titular = this;
       }
 
+    public removerDependente(dependente: Cliente): void {
+    const index = this.dependentes.indexOf(dependente);
+        if (index !== -1) {
+            this.dependentes.splice(index, 1);
+        }
+    }
+}
+
 
     
-}
