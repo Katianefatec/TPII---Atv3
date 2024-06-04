@@ -9,6 +9,12 @@ export default class MenuTipoAtualizaCliente implements Menu {
         console.log(`| 1 - Atualizar nome`)
         console.log(`| 2 - Atualizar nome social`)
         console.log(`| 3 - Atualizar data de nascimento`)
+        console.log(`| 4 - Atualizar Endereço`)
+        console.log(`| 5 - Atualizar Telefone`)
+        console.log(`| 6 - Atualizar Documento`)
+        
+        
+        
         console.log(`----------------------`)
     }
 }

@@ -1,8 +1,7 @@
-import Processo from "../abstracoes/processo";
-import Armazem from "../dominio/armazem";
-import Cliente from "../modelos/cliente";
+import Processo from "../../abstracoes/processo";
+import Armazem from "../../dominio/armazem";
+import Cliente from "../../modelos/cliente";
 import CadastrarDocumentosCliente from "./cadastrarDocumentosCliente";
-import Endereco from "../modelos/endereco";
 
 export default class CadastroClienteDependente extends Processo {
   private titular: Cliente;

@@ -1,6 +1,6 @@
-import Processo from "../abstracoes/processo";
-import Armazem from "../dominio/armazem";
-import Cliente from "../modelos/cliente";
+import Processo from "../../abstracoes/processo";
+import Armazem from "../../dominio/armazem";
+import Cliente from "../../modelos/cliente";
 
 export default class AtualizarClienteNome extends Processo {
     private nomeCliente: string
@@ -18,11 +18,9 @@ export default class AtualizarClienteNome extends Processo {
 
         if (cliente) {
             let nome = this.entrada.receberTexto('Qual o novo nome do cliente?')
-            let nomeSocial = this.entrada.receberTexto('Qual o novo nome social do cliente?')
-            
+                       
 
-            cliente.Nome = nome
-            cliente.NomeSocial = nomeSocial
+            cliente.Nome = nome            
 
             armazem.Clientes.push(cliente)
 
