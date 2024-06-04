@@ -28,22 +28,49 @@ export default class AtualizarClienteDocumento extends Processo {
       let dataExpedicao = this.entrada.receberData(
         "Qual a nova data de expedição?"
       );
-     
+
       switch (tipoDocumento) {
         case 1:
-          cliente.Documentos.push(
-            new Documento(numero, TipoDocumento.CPF, dataExpedicao)
+          // Encontre o documento CPF existente (se houver) e atualize-o, caso contrário, adicione um novo
+          let cpfIndex = cliente.Documentos.findIndex(
+            (doc) => doc.Tipo === TipoDocumento.CPF
           );
+          if (cpfIndex !== -1) {
+            cliente.Documentos[cpfIndex].Numero = numero;
+            cliente.Documentos[cpfIndex].DataExpedicao = dataExpedicao;
+          } else {
+            cliente.Documentos.push(
+              new Documento(numero, TipoDocumento.CPF, dataExpedicao)
+            );
+          }
           break;
         case 2:
-          cliente.Documentos.push(
-            new Documento(numero, TipoDocumento.RG, dataExpedicao)
+          
+          let rgIndex = cliente.Documentos.findIndex(
+            (doc) => doc.Tipo === TipoDocumento.RG
           );
+          if (rgIndex !== -1) {
+            cliente.Documentos[rgIndex].Numero = numero;
+            cliente.Documentos[rgIndex].DataExpedicao = dataExpedicao;
+          } else {
+            cliente.Documentos.push(
+              new Documento(numero, TipoDocumento.RG, dataExpedicao)
+            );
+          }
           break;
         case 3:
-          cliente.Documentos.push(
-            new Documento(numero, TipoDocumento.Passaporte, dataExpedicao)
+          
+          let passaporteIndex = cliente.Documentos.findIndex(
+            (doc) => doc.Tipo === TipoDocumento.Passaporte
           );
+          if (passaporteIndex !== -1) {
+            cliente.Documentos[passaporteIndex].Numero = numero;
+            cliente.Documentos[passaporteIndex].DataExpedicao = dataExpedicao;
+          } else {
+            cliente.Documentos.push(
+              new Documento(numero, TipoDocumento.Passaporte, dataExpedicao)
+            );
+          }
           break;
         default:
           console.log("Opção de tipo de documento inválida.");

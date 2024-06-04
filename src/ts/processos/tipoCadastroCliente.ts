@@ -1,9 +1,9 @@
-import Processo from "../../abstracoes/processo";
-import Armazem from "../../dominio/armazem";
-import MenuTipoCadastroCliente from "../../menus/menuTipoCadastroCliente";
-import Cliente from "../../modelos/cliente";
-import CadastroClienteDependente from "./cadastroClienteDependente";
-import CadastroClienteTitular from "./cadastroClienteTitular";
+import Processo from "../abstracoes/processo";
+import Armazem from "../dominio/armazem";
+import MenuTipoCadastroCliente from "../menus/menuTipoCadastroCliente";
+import Cliente from "../modelos/cliente";
+import CadastroClienteDependente from "./cadastrar/cadastroClienteDependente";
+import CadastroClienteTitular from "./cadastrar/cadastroClienteTitular";
 
 export default class TipoCadastroCliente extends Processo {
     constructor() {

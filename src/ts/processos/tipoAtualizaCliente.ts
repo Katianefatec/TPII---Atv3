@@ -1,11 +1,11 @@
-import Processo from "../../abstracoes/processo";
-import MenuTipoAtualizaCliente from "../../menus/menuTipoAtualizaCliente";
-import AtualizarClienteNome from "./atualizaClienteNome";
-import AtualizarClienteNomeSocial from "./atualizaClienteNomeSocial"; 
-import AtualizarClienteDataNascimento from "./atualizaClienteDataNascimento"; 
-import AtualizarClienteEndereco from "./atualizaClienteEndereco"; 
-import AtualizarClienteTelefone from "./atualizaClienteTelefone"; 
-import AtualizarClienteDocumento from "./atualizaClienteDocumento"; 
+import Processo from "../abstracoes/processo";
+import MenuTipoAtualizaCliente from "../menus/menuTipoAtualizaCliente";
+import AtualizarClienteDataNascimento from "./atualizar/atualizaClienteDataNascimento";
+import AtualizarClienteDocumento from "./atualizar/atualizaClienteDocumento";
+import AtualizarClienteEndereco from "./atualizar/atualizaClienteEndereco";
+import AtualizarClienteNome from "./atualizar/atualizaClienteNome";
+import AtualizarClienteNomeSocial from "./atualizar/atualizaClienteNomeSocial";
+import AtualizarClienteTelefone from "./atualizar/atualizaClienteTelefone";
 
 export default class TipoAtualizaCliente extends Processo {
   constructor() {

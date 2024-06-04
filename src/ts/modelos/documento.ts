@@ -14,6 +14,9 @@ export default class Documento {
     public get Numero(){
         return this.numero
     }
+    public set Numero(novoNumero: string) {
+        this.numero = novoNumero;
+    }
     public get Tipo(){
         return this.tipo
     }
@@ -22,6 +25,9 @@ export default class Documento {
     }
     public get DataExpedicao(){
         return this.dataExpedicao
+    }
+    public set DataExpedicao(novaDataExpedicao: Date) {
+        this.dataExpedicao = novaDataExpedicao;
     }
     
 }
