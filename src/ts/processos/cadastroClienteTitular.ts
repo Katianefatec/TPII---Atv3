@@ -29,7 +29,7 @@ export default class CadastroClienteTitular extends Processo {
 
         let cadastrarDependente = this.entrada.receberConfirmacao("Deseja cadastrar um dependente? (sim/nao)");
         if (cadastrarDependente) {
-            this.processo = new CadastroClienteDependente(cliente.Endereco); 
+            this.processo = new CadastroClienteDependente(cliente);
             this.processo.processar();
         }
 

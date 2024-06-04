@@ -23,16 +23,18 @@ export default class TipoCadastroCliente extends Processo {
                 let titular: Cliente;
                 let armazem = Armazem.InstanciaUnica; 
                 let nomeTitular = this.entrada.receberTexto("Qual o nome do titular?"); 
-                titular = armazem.Clientes.find(cliente => cliente.Nome === nomeTitular) as Cliente; 
-                if (titular) { 
-                    this.processo = new CadastroClienteDependente(titular.Endereco); 
+                titular = armazem.Clientes.find(
+                    (cliente) => cliente.Nome === nomeTitular
+                  ) as Cliente;
+                  if (titular) {
+                    this.processo = new CadastroClienteDependente(titular);
                     this.processo.processar();
-                } else {
-                    console.log('Titular não encontrado!');
-                }
-                break;           
-            default:
-                console.log('Opção não entendida :(')
+                  } else {
+                    console.log("Titular não encontrado!");
+                  }
+                  break;
+                default:
+                  console.log("Opção não entendida :(");
         }
     }
 }
