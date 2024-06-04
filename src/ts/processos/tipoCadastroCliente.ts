@@ -1,5 +1,8 @@
 import Processo from "../abstracoes/processo";
+import Armazem from "../dominio/armazem";
 import MenuTipoCadastroCliente from "../menus/menuTipoCadastroCliente";
+import Cliente from "../modelos/cliente";
+import CadastroClienteDependente from "./cadastroClienteDependente";
 import CadastroClienteTitular from "./cadastroClienteTitular";
 
 export default class TipoCadastroCliente extends Processo {
@@ -16,6 +19,18 @@ export default class TipoCadastroCliente extends Processo {
                 this.processo = new CadastroClienteTitular()
                 this.processo.processar()
                 break
+            case 2:
+                let titular: Cliente;
+                let armazem = Armazem.InstanciaUnica; 
+                let nomeTitular = this.entrada.receberTexto("Qual o nome do titular?"); 
+                titular = armazem.Clientes.find(cliente => cliente.Nome === nomeTitular) as Cliente; 
+                if (titular) { 
+                    this.processo = new CadastroClienteDependente(titular.Endereco); 
+                    this.processo.processar();
+                } else {
+                    console.log('Titular não encontrado!');
+                }
+                break;           
             default:
                 console.log('Opção não entendida :(')
         }

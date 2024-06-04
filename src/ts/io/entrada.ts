@@ -22,4 +22,10 @@ export default class Entrada {
         let data = new Date(ano.valueOf(), mes.valueOf() - 1, dia.valueOf())
         return data
     }
+
+    public receberConfirmacao(mensagem: string): boolean {
+        let prompt = promptSync();
+        let valor = prompt(`${mensagem} (sim/nao) `)
+        return valor.toLowerCase() === 'sim';
+    }
 }

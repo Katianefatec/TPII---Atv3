@@ -18,6 +18,7 @@ export default class Cliente {
         this.nomeSocial = nomeSocial
         this.dataNascimento = dataNascimento
         this.dataCadastro = new Date()
+        this.telefones = []
     }
 
     public get Nome() { return this.nome }

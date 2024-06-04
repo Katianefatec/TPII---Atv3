@@ -1,3 +1,5 @@
+import Prototipo from "../interfaces/prototipo"
+
 export default class Telefone {
     private ddd: string
     private numero: string
@@ -7,4 +9,7 @@ export default class Telefone {
     }
     public get Ddd() { return this.ddd }
     public get Numero() { return this.numero }
+    public clonar(): Telefone {
+        return new Telefone(this.ddd, this.numero); 
+    }
 }
