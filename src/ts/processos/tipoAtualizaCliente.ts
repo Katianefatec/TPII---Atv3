@@ -6,6 +6,7 @@ import AtualizarClienteEndereco from "./atualizar/atualizaClienteEndereco";
 import AtualizarClienteNome from "./atualizar/atualizaClienteNome";
 import AtualizarClienteNomeSocial from "./atualizar/atualizaClienteNomeSocial";
 import AtualizarClienteTelefone from "./atualizar/atualizaClienteTelefone";
+import CadastroHospedagem from "./cadastrar/cadastroHospedagem";
 
 export default class TipoAtualizaCliente extends Processo {
   constructor() {
@@ -58,6 +59,13 @@ export default class TipoAtualizaCliente extends Processo {
             "Qual o nome do cliente que deseja atualizar?"
           );
           this.processo = new AtualizarClienteDocumento(nomeCliente);
+          this.processo.processar();
+          break;        
+        case 7:
+          nomeCliente = this.entrada.receberTexto(
+            "Para qual cliente deseja cadastrar uma nova hospedagem?"
+          );
+          this.processo = new CadastroHospedagem();
           this.processo.processar();
           break;
         default:
