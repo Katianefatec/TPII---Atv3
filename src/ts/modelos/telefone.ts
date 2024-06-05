@@ -9,7 +9,7 @@ export default class Telefone implements Prototipo{
     }
     public get Ddd() { return this.ddd }
     public get Numero() { return this.numero }
-    public clonar(): Telefone {
+    public clonar(): Prototipo {
         return new Telefone(this.ddd, this.numero); 
     }
 }
