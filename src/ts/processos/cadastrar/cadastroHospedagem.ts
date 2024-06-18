@@ -12,13 +12,11 @@ import Hospedagem from "../../modelos/hospedagem";
 import ControleHospedagem from "../controleHospedagem";
 
 
-export default class CadastroHospedagem extends Processo {
-  private controleHospedagem: ControleHospedagem;
+export default class CadastroHospedagem extends Processo { 
   private armazem: Armazem;
 
-  constructor() {
+  constructor(private controleHospedagem: ControleHospedagem) {
     super();
-    this.controleHospedagem = new ControleHospedagem();
     this.armazem = Armazem.InstanciaUnica;
   }
 
@@ -38,52 +36,45 @@ export default class CadastroHospedagem extends Processo {
         console.log("Cliente já está hospedado.");
         return;
       }
+    
+      this.controleHospedagem.listarAcomodacoesDisponiveis();
 
-      let tipoAcomodacao = this.entrada.receberNumero(
-        "Escolha o tipo de acomodação: \n" +
-          "1 - Casal Simples\n" +
-          "2 - Família Simples\n" +
-          "3 - Família Mais\n" +
-          "4 - Família Super\n" +
-          "5 - Solteiro Simples\n" +
-          "6 - Solteiro Mais\n" +
-          "Digite o número da opção: "
-      );
+      let indiceAcomodacao =
+        this.entrada.receberNumero("Digite o número da acomodação desejada: ") -
+        1;
 
-      let acomodacao: Acomodacao;
+      let acomodacoesDisponiveis =
+        this.controleHospedagem.getAcomodacoesDisponiveis();
 
-      switch (tipoAcomodacao) {
-        case 1:
-          acomodacao = new DiretorCasalSimples().construir();
-          break;
-        case 2:
-          acomodacao = new DiretorFamiliaSimples().construir();
-          break;
-        case 3:
-          acomodacao = new DiretorFamiliaMais().construir();
-          break;
-        case 4:
-          acomodacao = new DiretorFamiliaSuper().construir();
-          break;
-        case 5:
-          acomodacao = new DiretorSolteiroSimples().construir();
-          break;
-        case 6:
-          acomodacao = new DiretorSolteiroMais().construir();
-          break;
-        default:
-          console.log("Opção de acomodação inválida.");
-          return;
+      if (
+        indiceAcomodacao >= 0 &&
+        indiceAcomodacao < acomodacoesDisponiveis.length
+      ) {
+        let acomodacao = acomodacoesDisponiveis[indiceAcomodacao];
+
+        
+        let acomodacaoNoArmazem = Armazem.InstanciaUnica.Acomodacoes.find(
+          (a) => a.NomeAcomadacao === acomodacao.NomeAcomadacao
+        );
+
+        if (acomodacaoNoArmazem) {
+          let dataEntrada = this.entrada.receberData("Digite a data de entrada:");
+
+          let hospedagem = new Hospedagem(cliente, acomodacao, dataEntrada);
+        this.controleHospedagem.adicionarHospedagem(hospedagem);
+
+        
+        this.controleHospedagem.removerAcomodacao(acomodacao);
+
+        Armazem.InstanciaUnica.Acomodacoes = this.controleHospedagem.getAcomodacoesDisponiveis();
+
+        console.log("Hospedagem cadastrada com sucesso!");
+      } else {
+        console.log("Opção de acomodação inválida.");
       }
-
-      let dataEntrada = this.entrada.receberData("Digite a data de entrada:");
-
-      let hospedagem = new Hospedagem(cliente, acomodacao, dataEntrada);
-      this.controleHospedagem.adicionarHospedagem(hospedagem);
-
-      console.log("Hospedagem cadastrada com sucesso!");
     } else {
       console.log("Cliente não encontrado.");
     }
   }
+}
 }

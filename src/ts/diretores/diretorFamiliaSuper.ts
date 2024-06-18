@@ -2,6 +2,7 @@ import ConstrutorAcomodacao from "../construtores/construtorAcomodacao";
 import { NomeAcomadacao } from "../enumeracoes/NomeAcomadacao";
 import Acomodacao from "../modelos/acomodacao";
 import Diretor from "../abstracoes/diretor";
+import Armazem from "../dominio/armazem";
 
 export default class DiretorFamiliaSuper extends Diretor<Acomodacao> {
 
@@ -19,6 +20,12 @@ export default class DiretorFamiliaSuper extends Diretor<Acomodacao> {
     objetoConstrutor.Suite=3;
     objetoConstrutor.Climatizacao=true;
     objetoConstrutor.Garagem=2;
-    return objetoConstrutor.construir();
+    objetoConstrutor.Capacidade=14;
+    objetoConstrutor.Valor=600.00;
+    let acomodacao = this.construtor.construir();
+    
+    Armazem.InstanciaUnica.Acomodacoes.push(acomodacao); 
+
+    return acomodacao;
   }
 }

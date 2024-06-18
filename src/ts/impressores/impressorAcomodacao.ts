@@ -2,25 +2,15 @@ import Impressor from "../interfaces/impressor";
 import Acomodacao from "../modelos/acomodacao";
 
 export default class ImpressorAcomodacao implements Impressor {
-    private acomodacao: Acomodacao
-    constructor(acomodacao: Acomodacao) {
-        this.acomodacao = acomodacao
-    }
-    imprimir(): string {
-        let descricao = `Nomenclatura: ${this.acomodacao.NomeAcomadacao.toString()}\n`
-            + `-- Quantidade de leitos para solteiros: ${this.acomodacao.CamaSolteiro}\n`
-            + `-- Quantidade de leitos para casais: ${this.acomodacao.CamaCasal}\n`
-            + `-- Climatização: ${this.converterBooleano(this.acomodacao.Climatizacao)}\n`
-            + `-- Quantidade de garagens disponíveis: ${this.acomodacao.Garagem}\n`
-            + `-- Quantidade de suites: ${this.acomodacao.Suite}\n`
-        return descricao
-    }
+  private acomodacao: Acomodacao;
 
-    private converterBooleano(valor: Boolean) {
-        if (valor) {
-            return `sim`
-        } else {
-            return `não`
-        }
-    }
+  constructor(acomodacao: Acomodacao) {
+    this.acomodacao = acomodacao;
+  }
+
+  imprimir(): string {
+    return `Tipo: ${this.acomodacao.NomeAcomadacao}\n` +
+           `-- Capacidade: ${this.acomodacao.Capacidade}\n` +
+           `-- Valor da diária: R$${this.acomodacao.Valor.toFixed(2)}\n`; 
+  }
 }

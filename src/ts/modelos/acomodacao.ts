@@ -7,6 +7,9 @@ export default class Acomodacao {
   private suite: number;
   private climatizacao: boolean;
   private garagem: number;
+  private capacidade: number;
+  private valor: number;
+  
 
   constructor(
     nomeAcomadacao: NomeAcomadacao,
@@ -14,7 +17,9 @@ export default class Acomodacao {
     camaCasal: number,
     suite: number,
     climatizacao: boolean,
-    garagem: number
+    garagem: number,
+    capacidade: number,
+    valor: number
   ) {
     this.nomeAcomadacao = nomeAcomadacao;
     this.camaSolteiro = camaSolteiro;
@@ -22,6 +27,8 @@ export default class Acomodacao {
     this.suite = suite;
     this.climatizacao = climatizacao;
     this.garagem = garagem;
+    this.capacidade = capacidade;
+    this.valor = valor;
   }
 
   public get NomeAcomadacao() {
@@ -41,5 +48,13 @@ export default class Acomodacao {
   }
   public get Garagem() {
     return this.garagem;
+  }
+
+  public get Capacidade() {
+    return this.capacidade;
+  }
+
+  public get Valor() {
+    return this.valor;
   }
 }

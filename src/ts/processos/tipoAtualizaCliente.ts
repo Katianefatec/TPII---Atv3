@@ -7,11 +7,14 @@ import AtualizarClienteNome from "./atualizar/atualizaClienteNome";
 import AtualizarClienteNomeSocial from "./atualizar/atualizaClienteNomeSocial";
 import AtualizarClienteTelefone from "./atualizar/atualizaClienteTelefone";
 import CadastroHospedagem from "./cadastrar/cadastroHospedagem";
+import ControleHospedagem from "./controleHospedagem";
 
 export default class TipoAtualizaCliente extends Processo {
+  private controleHospedagem: ControleHospedagem;
   constructor() {
     super();
     this.menu = new MenuTipoAtualizaCliente();
+    this.controleHospedagem = new ControleHospedagem();
   }
   processar(): void {
     this.menu.mostrar();
@@ -65,7 +68,7 @@ export default class TipoAtualizaCliente extends Processo {
           nomeCliente = this.entrada.receberTexto(
             "Para qual cliente deseja cadastrar uma nova hospedagem?"
           );
-          this.processo = new CadastroHospedagem();
+          this.processo = new CadastroHospedagem(this.controleHospedagem); 
           this.processo.processar();
           break;
         default:
